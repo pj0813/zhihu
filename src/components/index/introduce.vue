@@ -111,7 +111,6 @@ export default {
 	}
 	.brief{
 		color:#1a1a1a;
-		
 	}
 	.brief:hover{
 		color:#646464;
