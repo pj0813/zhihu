@@ -1,7 +1,21 @@
 <template>
     <div>
-        <div>
-				
+				<div class="follow_list">
+					<div class="floor">
+						<div class="follow_title">
+							<a class="" href="#">
+								Foxiii
+								<span class="iconfont icon-renzheng"></span>
+							</a>
+							<span>回答了问题</span>
+							<span class="iconfont icon-dian"></span>
+							<span>20 小时前</span>
+						</div>
+					</div>
+				</div>
+        <div class="empty">
+					<span class="iconfont icon-liebiao01"></span>
+					<p class="empty_txt">还没有关注的人，为你推荐以下用户</p>
 				</div>
 				<div>
 					<div class="floor">
@@ -58,6 +72,22 @@ export default {
 }
 </script>
 <style lang="css">
+	.follow_title{
+		color:#8590a6;
+	}
+	.empty{
+		text-align:center;
+		color: grey;
+		padding:20px 0;
+	}
+	.empty>span{
+		font-size:80px;	
+		color:#EBEEF5;
+	}
+	.empty_txt{
+		text-align:center;
+		margin-top:20px;
+	}
 	.floor{
 		padding:10px 20px;
 		border-bottom:1px solid #ddd;
