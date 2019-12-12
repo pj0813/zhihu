@@ -15,17 +15,28 @@
 				</div>
 				<div class="hotList">
 					<div class="hotList_floor">
-						<div>
+						<div class="hotList_index">
 							1
 						</div>
-						<div>
+						<div class="hotList_content">
 							<a href="#">
-							
+								<div class="hotList_title">如何评价动画《哪吒与变形金刚》的预告片与海报？</div>
+								<div class="hotList_intro">中美两岸开花</div>
 							</a>
+							<div class="hotList_btn">
+									<span>
+										<span class="iconfont icon-renqi"></span>
+										407 万热度
+									</span>
+									<span>
+										<span class="iconfont icon-fenxiang"></span>
+										分享
+									</span>
+								</div>
 						</div>
 						<div>
-							<a href="#">
-								<img src="@/img/"/>
+							<a href="#" class="hot_img">
+								<img src="@/img/intro/hot1.jpg"/>
 							</a>
 						</div>
 					</div>
@@ -71,6 +82,45 @@ export default {
 		border-bottom:1px solid #ddd;
 		display:flex;
 		flex-direction: row;
+	}
+	.hotList_index{
+		font-size:20px;
+		font-weight:bold;
+		color: #ff9607;
+		width:27px;
+	}
+	.hot_img{
+		display:block;
+		height:105px;
+		width:190px;
+		padding-left:20px;
+	}
+	.hot_img>img{
+		width:100%;
+		height:100%;
+		
+	}
+	.hotList_content{
+		height:105px;
+		flex:auto;
+		display:flex;
+		flex-direction: column;
 		justify-content: space-between;
+	}
+	.hotList_title{
+		font-weight:bold;
+		font-size:18px;
+	}
+	.hotList_intro{
+		color:#444;
+		font-size:16px;
+		margin-top:5px;
+	}
+	.hotList_btn{
+		color:#8590a6;
+		font-size:14px;
+	}
+	.hotList_btn>span{
+		margin-right:20px;
 	}
 </style>
