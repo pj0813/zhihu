@@ -4,8 +4,8 @@
 			<div class="intro_title">
 				<a>有哪些电影镜头导演没喊卡却成了经典？</a>
 			</div>
-			<div class="intro_content">
-				<a href="">
+			<div class="intro_content" v-if="!isAll">
+				<a href="javascript:void(0);" @click="toggleAll">
 					<div class="intro_left">
 						<img src="@/img/intro/1.jpg">
 						<div class="play">
@@ -21,12 +21,16 @@
 					</div>
 				</a>
 			</div>
+			<div class="intro_content" v-if="isAll">
+				显示全部内容
+			</div>
 			<div class="intro_btn">
-				<button>
+				<div>
+					<button @click="addClass(0)" :class="{agree_active:0==current}">
 					<span class="iconfont icon-lashenshang"></span>
-					赞同10K
+					{{agree}}
 				</button>
-				<button>
+				<button @click="addClass(1)" :class="{agree_active:1==current}">
 					<span class="iconfont icon-lashenxia"></span>
 				</button>
 				<a href="">
@@ -45,14 +49,40 @@
 					<span class="iconfont icon-xinxing"></span>
 					<span>感谢</span>
 				</a>
-				<span class="iconfont icon-lve"></span>
+				<a href="">
+					<span class="iconfont icon-lve more"></span>
+				</a>
+				</div>
+					<a v-if="isAll" class="up" @click="toggleAll">
+					收起
+						<span class="iconfont icon-up"></span>
+					</a>
 			</div>
 		</div>
 	</div>
 </template>
 <script>
 export default {
-    
+    data:function(){
+		return {
+			isAll:false,
+			agree:"赞同10K",
+			current:''
+		}
+	},
+	methods:{
+		toggleAll:function(){
+			this.isAll=!this.isAll;
+		},
+		addClass:function(index){
+			if(this.current==index){
+				this.current=2;
+			}else{
+				this.current=index;
+			}
+			console.log(this.current);
+		}
+	}
 }
 </script>
 <style lang="css">
@@ -108,6 +138,9 @@ export default {
 		padding:10px 0;
 		color: #8590a6;
 		font-size:14px;
+		display:flex;
+		flex-direction: row;
+		justify-content: space-between;
 	}
 	.brief{
 		color:#1a1a1a;
@@ -121,7 +154,7 @@ export default {
 	.readAll:hover{
 		color:#646464;
 	}
-	.intro_btn>button{
+	.intro_btn button{
 		color: #0084ff;
 		background: rgba(0,132,255,.1);
 		padding:5px;
@@ -129,17 +162,28 @@ export default {
 		cursor:pointer;
 		text-align:center;
 	}
-	.intro_btn>button:hover{
+	.intro_btn button:hover{
 		background-color: rgba(0,132,255,.15);
 	}
-	.intro_btn>a{
+	.intro_btn a{
 		margin-left:10px;
 	}
-	.intro_btn>a:hover,.intro_btn>span:hover{
+	.intro_btn a:hover,.intro_btn a>span:hover{
 		color:#76839b;
 	}
-	.intro_btn>span{
+	.more{
 		margin-left:10px;
 		cursor:pointer;
+	}
+	.up{
+		padding:5px;
+		cursor:pointer;
+	}
+	.up>span{
+		font-size:12px;
+	}
+	.intro_btn .agree_active,.intro_btn .agree_active:hover{
+		color: #fff;
+    background: #0084ff;
 	}
 </style>
