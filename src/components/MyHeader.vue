@@ -1,48 +1,76 @@
 <template>
   <div class="header">
-    <a href="#" class="table">知乎</a>
-    <ul class="nav">
-      <li class="item">
-        <router-link to="/" exact>
-          首页
-        </router-link>
-      </li>
-      <li class="item">
-        <router-link to="/find">
-          发现
-        </router-link>
-      </li>
-      <li class="item">
-        <router-link to="/answer">
-          等你来答
-        </router-link>
-      </li>
-    </ul>
-    <div class="input_ques">
-      <div class="ques_search">
-        <input type="text" class="ques">
-        <p class="search_btn">
-          <span class="iconfont icon-sousuo"></span>
-        </p>
-      </div>
-      <button class="ques_btn">提问</button>
-    </div>
-    <div class="myCenter">
-      <div @click="tabChange('msg')">
-        <span class="iconfont icon-lingsheng"></span>
-      </div>
-      <div @click="tabChange('priv')">
-        <span class="iconfont icon-comments"></span>
-      </div>
-      <div @click="tabChange('center')">
-        <img src="../img/da8e974dc_im.jpg" class="head_pic">  
-      </div>
-    </div>
+		<div>
+			<div v-show="is_show">
+				<div class="header_inner">
+					<a href="#" class="table">知乎</a>
+				<ul class="nav">
+					<li class="item">
+						<router-link to="/" exact>
+						首页
+						</router-link>
+					</li>
+					<li class="item">
+						<router-link to="/find">
+						发现
+						</router-link>
+					</li>
+					<li class="item">
+						<router-link to="/answer">
+						等你来答
+						</router-link>
+					</li>
+				</ul>
+				<div class="input_ques">
+					<div class="ques_search">
+						<input type="text" class="ques">
+						<p class="search_btn">
+							<span class="iconfont icon-sousuo"></span>
+						</p>
+					</div>
+					<button class="ques_btn">提问</button>
+				</div>
+				<div class="myCenter">
+					<div @click="tabChange('msg')">
+						<span class="iconfont icon-lingsheng"></span>
+					</div>
+					<div @click="tabChange('priv')">
+						<span class="iconfont icon-comments"></span>
+					</div>
+					<div @click="tabChange('center')">
+						<img src="../img/da8e974dc_im.jpg" class="head_pic">  
+					</div>
+				</div>
+				</div>
+				
+			</div>
+			<div class="PageHeader" v-show="!is_show">
+				<div class="PageHeader_inner">
+					<a href="#" class="table">知乎</a>
+				<slot></slot>
+				<div class="input_ques">
+					<div class="ques_search">
+						<input type="text" class="ques">
+						<p class="search_btn">
+							<span class="iconfont icon-sousuo"></span>
+						</p>
+					</div>
+					<button class="ques_btn">提问</button>
+				</div>	
+				</div>
+			</div>
+		</div>
   </div>
 </template>
 
 <script>
   export default{
+		data(){
+			return {
+				
+			}
+		},
+		props:['is_show'],
     methods:{
 			tabChange(tabItem) {
        this.$emit('changeItem',tabItem);
@@ -54,13 +82,28 @@
 <style lang="css">
   .header{
 		min-width: 1032px;
-    height: 50px;
+		padding: 0 30px;
     border-bottom:1px solid #ddd;
-    display: flex;
+		background:#fff;
+		position:fixed;
+		top:0;
+		left:0;
+		z-index:500;
+		width:100%;
+		display: flex;
     flex-direction: row;
-    padding: 0 60px;
-    justify-content: space-between;
+		justify-content: center;
+
   }
+	.header>div{
+		width:1016px;
+	}
+	.header_inner,.PageHeader_inner{
+		height: 50px;
+		display: flex;
+    flex-direction: row;
+		justify-content: space-between;
+	}
   .table{
     font-size: 30px;
     line-height: 50px;

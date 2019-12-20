@@ -29,8 +29,8 @@ export default {
 </script>
 <style lang="css">
 	.index{
-        padding:20px 30px;
-        background: #f6f6f6;
+        padding-top:0 30px 20px;
+        
         display: flex;
         flex-direction: row;
 				justify-content: center;
